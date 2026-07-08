@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LaienTech App Review Analysis</title>
+<style>
+:root {
+  --bg: #0f1117; --card: #1a1d27; --border: #2a2d3a;
+  --text: #e1e4ed; --muted: #8b8fa3; --accent: #6c8cff;
+  --success: #4caf93; --warning: #e8b44b; --error: #e0556a;
+  --progress-bg: #242736;
+}
+* { margin:0; padding:0; box-sizing:border-box; }
+body { background:var(--bg); color:var(--text); font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif; min-height:100vh; }
+.app { max-width:1100px; margin:0 auto; padding:24px; }
+.header { text-align:center; margin-bottom:32px; }
+.header h1 { font-size:28px; margin-bottom:8px; }
+.header p { color:var(--muted); font-size:14px; }
+
+.input-row { display:flex; gap:12px; margin-bottom:32px; align-items:center; }
+.input-row input { flex:1; padding:12px 16px; background:var(--card); border:1px solid var(--border); border-radius:8px; color:var(--text); font-size:14px; }
+.input-row input::placeholder { color:var(--muted); }
+.btn { padding:12px 28px; border:none; border-radius:8px; font-size:14px; font-weight:600; cursor:pointer; transition:.2s; }
+.btn-primary { background:var(--accent); color:#fff; }
+.btn-primary:hover { opacity:.9; }
+.btn-primary:disabled { opacity:.4; cursor:not-allowed; }
+.btn-sm { padding:6px 14px; font-size:12px; border-radius:6px; }
+
+.overall-progress { margin-bottom:24px; }
+.progress-bar { height:6px; background:var(--progress-bg); border-radius:3px; overflow:hidden; margin-bottom:8px; }
+.progress-fill { height:100%; background:var(--accent); border-radius:3px; transition:width .5s; width:0; }
+.progress-text { font-size:12px; color:var(--muted); }
+
+.steps { display:grid; gap:12px; margin-bottom:32px; }
+.step-card { background:var(--card); border:1px solid var(--border); border-radius:10px; padding:16px 20px; transition:.3s; cursor:pointer; }
+.step-card:hover { border-color:var(--accent); }
+.step-header { display:flex; align-items:center; gap:12px; }
+.step-icon { width:32px; height:32px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:14px; flex-shrink:0; }
+.step-icon.pending { background:var(--progress-bg); color:var(--muted); }
+.step-icon.running { background:rgba(108,140,255,.2); color:var(--accent); animation:pulse 1.5s infinite; }
+.step-icon.done { background:rgba(76,175,147,.2); color:var(--success); }
+@keyframes pulse { 0%,100%{opacity:1} 50%{opacity:.5} }
+.step-info { flex:1; }
+.step-title { font-size:15px; font-weight:600; }
+.step-status { font-size:12px; color:var(--muted); margin-top:2px; }
+.step-badge { font-size:11px; padding:2px 8px; border-radius:10px; }
+.step-badge.pending { background:var(--progress-bg); color:var(--muted); }
+.step-badge.running { background:rgba(108,140,255,.15); color:var(--accent); }
+.step-badge.done { background:rgba(76,175,147,.15); color:var(--success); }
+
+.step-detail { display:none; margin-top:12px; padding-top:12px; border-top:1px solid var(--border); }
+.step-detail.open { display:block; }
+.step-detail pre { background:var(--bg); padding:12px; border-radius:6px; font-size:12px; overflow-x:auto; max-height:300px; overflow-y:auto; color:var(--text); white-space:pre-wrap; }
+
+.tabs { display:flex; gap:4px; margin-bottom:0; }
+.tab { padding:8px 20px; background:transparent; border:none; color:var(--muted); font-size:13px; cursor:pointer; border-bottom:2px solid transparent; transition:.2s; }
+.tab.active { color:var(--accent); border-bottom-color:var(--accent); }
+.tab-content { display:none; background:var(--card); border:1px solid var(--border); border-radius:0 8px 8px 8px; padding:20px; min-height:200px; }
+.tab-content.active { display:block; }
+
+.issue-card { background:var(--bg); border-radius:8px; padding:14px; margin-bottom:10px; }
+.issue-card .sev { display:inline-block; padding:2px 8px; border-radius:4px; font-size:11px; font-weight:600; margin-right:8px; }
+.sev-critical { background:rgba(224,85,106,.2); color:var(--error); }
+.sev-high { background:rgba(232,180,75,.2); color:var(--warning); }
+.sev-medium { background:rgba(108,140,255,.2); color:var(--accent); }
+
+.result-section { margin-top:24px; }
+.result-section h3 { font-size:16px; margin-bottom:12px; }
+
+.empty-state { text-align:center; padding:40px; color:var(--muted); }
+.empty-state .icon { font-size:48px; margin-bottom:12px; }
+
+@media (max-width:640px) {
+  .input-row { flex-direction:column; }
+  .tabs { overflow-x:auto; flex-wrap:nowrap; }
+}
+</style>
+</head>
+<body>
+<div class="app">
+
+<div class="header">
+  <h1>📱 App Review Analysis</h1>
+  <p>LaienTech — 从用户评价到产品决策的全流程分析工具</p>
+</div>
+
+<div class="input-row">
+  <input id="appUrl" placeholder="App Store URL" 
+         value="https://apps.apple.com/us/app/workout-for-women-home-gym/id839285684">
+  <input id="apiKey" type="password" placeholder="DeepSeek API Key (可选)" 
+         style="flex:0.5" oninput="updateAgentBadge()">
+  <span id="agentBadge" style="display:none;font-size:11px;padding:2px 10px;border-radius:12px;background:rgba(108,140,255,.2);color:#6c8cff;white-space:nowrap">🧠 Agent</span>
+  <button class="btn btn-primary" id="btnStart" onclick="startPipeline()">▶ 开始分析</button>
+  <button class="btn btn-sm" style="background:var(--progress-bg);color:var(--muted);border:1px solid var(--border)" onclick="startPipeline(true)">📦 离线演示</button>
+</div>
+
+<div class="overall-progress" id="overallProgress" style="display:none">
+  <div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div>
+  <div class="progress-text"><span id="progressLabel">准备中...</span></div>
+</div>
+
+<div class="steps" id="steps"></div>
+
+<div class="tabs" id="tabs">
+  <button class="tab active" onclick="switchTab('results')">📊 分析结果</button>
+  <button class="tab" onclick="switchTab('raw')">📄 原始数据</button>
+  <button class="tab" onclick="switchTab('reports')">📝 可读报告</button>
+  <button class="tab" onclick="switchTab('dashboard')">📊 分析看板</button>
+  <button class="tab" onclick="switchTab('prd')">📋 PRD</button>
+  <button class="tab" onclick="switchTab('tc')">✅ 测试用例</button>
+</div>
+
+<div class="tab-content active" id="tab-results">
+  <div class="empty-state"><div class="icon">🚀</div>点击"开始分析"启动完整工作流</div>
+</div>
+<div class="tab-content" id="tab-raw">
+  <div class="empty-state"><div class="icon">📄</div>分析完成后可在此查看各步骤原始 JSON 数据</div>
+</div>
+<div class="tab-content" id="tab-dashboard">
+  <div class="empty-state"><div class="icon">📊</div>分析完成后可在此查看交互式分析看板</div>
+</div>
+<div class="tab-content" id="tab-prd">
+  <div class="empty-state"><div class="icon">📋</div>分析完成后可在此查看 PRD</div>
+</div>
+<div class="tab-content" id="tab-tc">
+  <div class="empty-state"><div class="icon">✅</div>分析完成后可在此查看测试用例</div>
+</div>
+
+</div>
+
+<script>
+const STEPS = [
+  {key:'collect', icon:'⬇', label:'数据采集'},
+  {key:'clean', icon:'🧹', label:'评价清洗'},
+  {key:'analyze', icon:'🔍', label:'分类与分析'},
+  {key:'dashboard', icon:'📊', label:'分析看板生成'},
+  {key:'prd', icon:'📋', label:'PRD & 版本规划'},
+  {key:'testcases', icon:'✅', label:'测试用例生成'},
+];
+
+const AGENT_STEPS = ['prd', 'testcases'];  // 使用 LLM Agent 的步骤
+let pollTimer = null;
+let currentAgentMode = false;
+
+function updateAgentBadge() {
+  const key = document.getElementById('apiKey').value.trim();
+  const badge = document.getElementById('agentBadge');
+  badge.style.display = key ? 'inline-block' : 'none';
+  currentAgentMode = !!key;
+}
+
+function initSteps() {
+  document.getElementById('steps').innerHTML = STEPS.map(s => `
+    <div class="step-card" id="step-${s.key}" onclick="toggleDetail('${s.key}')">
+      <div class="step-header">
+        <div class="step-icon pending" id="icon-${s.key}">${s.icon}</div>
+        <div class="step-info">
+          <div class="step-title">${s.label}</div>
+          <div class="step-status" id="status-${s.key}">等待中</div>
+        </div>
+        <span class="step-badge pending" id="badge-${s.key}">pending</span>
+      </div>
+      <div class="step-detail" id="detail-${s.key}">
+        <pre id="pre-${s.key}">等待执行...</pre>
+      </div>
+    </div>
+  `).join('');
+}
+
+function startPipeline(offline = false) {
+  document.getElementById('btnStart').disabled = true;
+  document.getElementById('overallProgress').style.display = 'block';
+  document.getElementById('tab-results').innerHTML = '<div class="empty-state"><div class="icon">⏳</div>分析进行中...</div>';
+  initSteps();
+
+  const apiKey = document.getElementById('apiKey').value.trim();
+  fetch('/api/start', {method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify({api_key: apiKey, offline: offline})})
+    .then(r => r.json())
+    .then(d => {
+      if (d.error) alert(d.error);
+      else startPolling();
+    });
+}
+
+function startPolling() {
+  if (pollTimer) clearInterval(pollTimer);
+  pollTimer = setInterval(poll, 1000);
+}
+
+function poll() {
+  fetch('/api/status').then(r => r.json()).then(updateUI);
+}
+
+function updateUI(state) {
+  // Progress
+  const fill = document.getElementById('progressFill');
+  const label = document.getElementById('progressLabel');
+  fill.style.width = state.overall_progress + '%';
+  if (state.running) {
+    const mode = currentAgentMode ? ' 🧠 Agent' : ' 📋 Rules';
+    label.textContent = `分析中... ${state.overall_progress}%${mode}`;
+  } else if (state.finished_at) {
+    const mode = currentAgentMode ? ' 🧠 Agent' : ' 📋 Rules';
+    label.textContent = `✅ 分析完成${mode}`;
+    document.getElementById('btnStart').disabled = false;
+    clearInterval(pollTimer);
+    renderFinalResults();
+  }
+
+  // Steps
+  for (const step of STEPS) {
+    const s = state.steps[step.key];
+    if (!s) continue;
+    const icon = document.getElementById('icon-' + step.key);
+    const badge = document.getElementById('badge-' + step.key);
+    const status = document.getElementById('status-' + step.key);
+    const pre = document.getElementById('pre-' + step.key);
+
+    icon.className = 'step-icon ' + s.status;
+    badge.className = 'step-badge ' + s.status;
+    badge.textContent = s.status;
+
+    if (s.status === 'running') {
+      status.textContent = '处理中... ' + s.progress + '%';
+    } else if (s.status === 'done') {
+      var methodText = '';
+      if (AGENT_STEPS.includes(step.key) && s.result) {
+        var m = s.result.method || '';
+        if (m.includes('LLM')) methodText = ' (🧠 LLM)';
+        else if (m.includes('rules')) methodText = ' (📋 Rules)';
+      }
+      status.textContent = '完成' + methodText;
+      if (s.result) {
+        pre.textContent = JSON.stringify(s.result, null, 2);
+        // Auto-expand newly completed steps
+        var detail = document.getElementById('detail-' + step.key);
+        if (!detail.classList.contains('open')) {
+          detail.classList.add('open');
+        }
+      }
+    }
+  }
+}
+
+function toggleDetail(key) {
+  const el = document.getElementById('detail-' + key);
+  el.classList.toggle('open');
+}
+
+function switchTab(name) {
+  document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+  document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+  document.querySelector(`[onclick="switchTab('${name}')"]`).classList.add('active');
+  document.getElementById('tab-' + name).classList.add('active');
+  if (name === 'raw') loadRawData();
+  if (name === 'results') renderFinalResults();
+  if (name === 'reports') loadReports();
+  if (name === 'dashboard') loadDashboard();
+  if (name === 'prd') loadIframe('tab-prd', '/prd');
+  if (name === 'tc') loadIframe('tab-tc', '/testcases');
+}
+
+function loadRawData() {
+  const steps = ['collect','clean','analyze','prd','testcases'];
+  const names = ['Raw Reviews','Cleaned','Analysis','PRD','Test Cases'];
+  const div = document.getElementById('tab-raw');
+  div.innerHTML = '<p style="margin-bottom:12px;color:var(--muted)">各步骤输出 JSON 数据</p>';
+  steps.forEach((s,i) => {
+    fetch('/api/result/' + s).then(r => r.json()).then(d => {
+      const sec = document.createElement('div');
+      sec.style.marginBottom = '16px';
+      sec.innerHTML = `<h4 style="color:var(--accent);margin-bottom:4px">📁 ${names[i]}</h4>
+        <pre style="background:var(--bg);padding:12px;border-radius:6px;font-size:11px;max-height:200px;overflow:auto;color:var(--text)">${JSON.stringify(d, null, 2).substring(0,3000)}${JSON.stringify(d,null,2).length>3000?'\n... (truncated)':''}</pre>`;
+      div.appendChild(sec);
+    });
+  });
+}
+
+function loadDashboard() {
+  document.getElementById('tab-dashboard').innerHTML = 
+    '<iframe src="/dashboard" style="width:100%;height:80vh;border:none;border-radius:8px"></iframe>';
+}
+
+function loadIframe(tabId, url) {
+  document.getElementById(tabId).innerHTML = 
+    '<iframe src="' + url + '" style="width:100%;height:80vh;border:none;border-radius:8px"></iframe>';
+}
+
+function loadReports() {
+  const div = document.getElementById('tab-reports');
+  div.innerHTML = '<div style="padding:16px;color:var(--muted)">加载中...</div>';
+  
+  fetch('/api/report/testcases')
+    .then(r => {
+      if (!r.ok) throw new Error('HTTP ' + r.status);
+      return r.text();
+    })
+    .then(txt => {
+      div.innerHTML = '<div style="padding:16px">' +
+        '<h3 style="color:var(--accent);margin-bottom:8px">📝 测试用例</h3>' +
+        '<pre style="background:var(--bg);padding:12px;border-radius:6px;font-size:11px;max-height:600px;overflow:auto;color:var(--text);white-space:pre-wrap">' +
+        txt.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;') +
+        '</pre></div>';
+    })
+    .catch(e => {
+      div.innerHTML = '<div style="padding:16px;color:#e0556a">加载测试用例失败: ' + e.message + '</div>';
+    });
+}
+
+function renderFinalResults() {
+  fetch('/api/status').then(r => r.json()).then(state => {
+    if (state.running) return;
+    const div = document.getElementById('tab-results');
+    
+    // Collect stats from each step
+    const analyze = state.steps.analyze?.result;
+    const prd = state.steps.prd?.result;
+    const tc = state.steps.testcases?.result;
+
+    if (!analyze && !prd) {
+      div.innerHTML = '<div class="empty-state"><div class="icon">⏳</div>等待分析完成...</div>';
+      return;
+    }
+
+    let html = '';
+
+    // Issues found
+    if (analyze && analyze.issues_found > 0) {
+      html += `<div class="result-section"><h3>🔍 发现 ${analyze.issues_found} 个问题</h3>`;
+      for (const iss of (analyze.top_issues || [])) {
+        const sevClass = iss.severity === 'critical' ? 'sev-critical' : iss.severity === 'high' ? 'sev-high' : 'sev-medium';
+        html += `<div class="issue-card">
+          <span class="sev ${sevClass}">${iss.severity}</span>
+          <strong>${iss.title}</strong> — ${iss.count} 条差评
+        </div>`;
+      }
+      html += `</div>`;
+    }
+
+    // PRD
+    if (prd) {
+      html += `<div class="result-section"><h3>📋 PRD — ${prd.total_requirements || 0} 条需求, ${prd.versions || 0} 个版本</h3>`;
+      if (prd.summary) {
+        for (const req of (Array.isArray(prd.summary) ? prd.summary : [])) {
+          html += `<div class="issue-card" style="border-left:3px solid var(--accent)">
+            <strong>${req.id}</strong>: ${req.title}
+            <div style="font-size:12px;color:var(--muted);margin-top:4px">来源: ${(req.source_review_ids||[]).length} 条用户评价</div>
+          </div>`;
+        }
+      }
+      html += `</div>`;
+    }
+
+    // Test Cases
+    if (tc) {
+      html += `<div class="result-section"><h3>✅ ${tc.total || 0} 条测试用例</h3>`;
+      html += `<p style="color:var(--muted);font-size:13px">覆盖 ${tc.requirements_covered || 0} 条需求, 引用源评价</p>`;
+      if (tc.sample) {
+        for (const t of tc.sample) {
+          html += `<div class="issue-card" style="border-left:3px solid var(--success)">
+            <strong>${t.id}</strong>: ${t.title}
+            <div style="font-size:12px;color:var(--muted);margin-top:4px">
+              需求: ${t.requirement_id} | 源评价: ${(t.source_review_ids||[]).join(', ')}
+            </div>
+          </div>`;
+        }
+      }
+      html += `</div>`;
+    }
+
+    div.innerHTML = html || '<div class="empty-state">暂无结果</div>';
+  });
+}
+
+// Init
+initSteps();
+</script>
+</body>
+</html>

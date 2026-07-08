@@ -1,0 +1,218 @@
+========================================================================
+Test Cases — with Source Review Traceability
+========================================================================
+Total Test Cases: 5
+Requirements Covered: 3
+Source Reviews Referenced: 9
+
+========================================================================
+【版本】 vNext (P0)
+========================================================================
+
+------------------------------------------------------------
+需求: 修复: 付费与订阅问题
+用户故事: 作为用户，我希望 付费与订阅问题 得到修复
+------------------------------------------------------------
+
+测试用例 TC-001 [P0] — 验证: 修复: 付费与订阅问题
+
+  【前置条件】
+    - App 已安装
+    - 测试账号已就绪
+
+  【测试步骤】
+    Step 1: 按要求执行测试
+      → 预期: 结果符合预期
+
+  【预期结果】 需求得到验证
+  【验证方式】 30天内无相关差评
+
+  【溯源源用户评价 (共 3 条)】
+  这些评价是编写此测试用例的依据。测试通过的前提是: 以下用户反映的问题得到解决。
+
+  ┌────────────────────────────────────────
+  │ 评价 ID: 14212862587
+  │ [1★] Bobillena — 2026-06-22 — v8.4.24
+  │ "Cancelled subscription and still got charged for it. No spot in app to manage no place on website either. Went to contact support and every time I hit submit it would say the request couldn't be submitted because it's spam. Don't get app it not free it will make you sign up for a subscription and not let you cancel it."
+  └────────────────────────────────────────
+
+  ┌────────────────────────────────────────
+  │ 评价 ID: 14210920635
+  │ [1★] kyacma — 2026-06-21 — v8.4.24
+  │ "I do not care if I have to watch ads but what I do care about is if I get a pop up screen with no continuation option only advertising the paid version. The workout is available with ads yet the interface traps you with their predatory ads."
+  └────────────────────────────────────────
+
+  ┌────────────────────────────────────────
+  │ 评价 ID: 14204125134
+  │ [1★] Tinazwrld143 — 2026-06-19 — v8.4.24
+  │ "I downloaded this app yesterday and I wanted to try the 1-week free trial, but once I used the Apple Pay feature to subscribe to the free trial I was charged $29.99!? Dealing with my bank now to get my money back but it literally said I would not get charged until a week after."
+  └────────────────────────────────────────
+
+
+测试用例 TC-002 [P0] — 边界测试: 修复: 付费与订阅问题
+
+  【前置条件】
+    - App 已安装
+    - 测试账号已就绪
+
+  【测试步骤】
+    Step 1: 按要求执行测试
+      → 预期: 结果符合预期
+
+  【预期结果】 需求得到验证
+  【验证方式】 30天内无相关差评
+
+  【溯源源用户评价 (共 3 条)】
+  这些评价是编写此测试用例的依据。测试通过的前提是: 以下用户反映的问题得到解决。
+
+  ┌────────────────────────────────────────
+  │ 评价 ID: 14212862587
+  │ [1★] Bobillena — 2026-06-22 — v8.4.24
+  │ "Cancelled subscription and still got charged for it. No spot in app to manage no place on website either. Went to contact support and every time I hit submit it would say the request couldn't be submitted because it's spam. Don't get app it not free it will make you sign up for a subscription and not let you cancel it."
+  └────────────────────────────────────────
+
+  ┌────────────────────────────────────────
+  │ 评价 ID: 14210920635
+  │ [1★] kyacma — 2026-06-21 — v8.4.24
+  │ "I do not care if I have to watch ads but what I do care about is if I get a pop up screen with no continuation option only advertising the paid version. The workout is available with ads yet the interface traps you with their predatory ads."
+  └────────────────────────────────────────
+
+  ┌────────────────────────────────────────
+  │ 评价 ID: 14204125134
+  │ [1★] Tinazwrld143 — 2026-06-19 — v8.4.24
+  │ "I downloaded this app yesterday and I wanted to try the 1-week free trial, but once I used the Apple Pay feature to subscribe to the free trial I was charged $29.99!? Dealing with my bank now to get my money back but it literally said I would not get charged until a week after."
+  └────────────────────────────────────────
+
+
+------------------------------------------------------------
+需求: 修复: 用户体验与广告问题
+用户故事: 作为用户，我希望 用户体验与广告问题 得到修复
+------------------------------------------------------------
+
+测试用例 TC-003 [P0] — 验证: 修复: 用户体验与广告问题
+
+  【前置条件】
+    - App 已安装
+    - 测试账号已就绪
+
+  【测试步骤】
+    Step 1: 按要求执行测试
+      → 预期: 结果符合预期
+
+  【预期结果】 需求得到验证
+  【验证方式】 30天内无相关差评
+
+  【溯源源用户评价 (共 3 条)】
+  这些评价是编写此测试用例的依据。测试通过的前提是: 以下用户反映的问题得到解决。
+
+  ┌────────────────────────────────────────
+  │ 评价 ID: 13976452003
+  │ [1★] Jen T from SC — 2026-04-19 — v8.4.18
+  │ "They've hidden the X button so that when the 90s ad finishes, you can't even get out of the ad without force closing the whole app. Been using this app since 2020. Been an avid user. Uninstalled today."
+  └────────────────────────────────────────
+
+  ┌────────────────────────────────────────
+  │ 评价 ID: 13766977638
+  │ [2★] rachelpickles — 2026-02-19 — v8.4.16
+  │ "I love the app have been using it since I had my second baby back in the beginning of 2023 and I've seen so many good results BUT I did not have so many advertisement especially just to do the workouts."
+  └────────────────────────────────────────
+
+  ┌────────────────────────────────────────
+  │ 评价 ID: 13710553183
+  │ [1★] JMEH1003 — 2026-02-03 — v8.4.15
+  │ "This app used to be fantastic…now it's nothing but ads and takes longer to get a workout in because of it. Will be finding something else to use."
+  └────────────────────────────────────────
+
+
+测试用例 TC-004 [P0] — 边界测试: 修复: 用户体验与广告问题
+
+  【前置条件】
+    - App 已安装
+    - 测试账号已就绪
+
+  【测试步骤】
+    Step 1: 按要求执行测试
+      → 预期: 结果符合预期
+
+  【预期结果】 需求得到验证
+  【验证方式】 30天内无相关差评
+
+  【溯源源用户评价 (共 3 条)】
+  这些评价是编写此测试用例的依据。测试通过的前提是: 以下用户反映的问题得到解决。
+
+  ┌────────────────────────────────────────
+  │ 评价 ID: 13976452003
+  │ [1★] Jen T from SC — 2026-04-19 — v8.4.18
+  │ "They've hidden the X button so that when the 90s ad finishes, you can't even get out of the ad without force closing the whole app. Been using this app since 2020. Been an avid user. Uninstalled today."
+  └────────────────────────────────────────
+
+  ┌────────────────────────────────────────
+  │ 评价 ID: 13766977638
+  │ [2★] rachelpickles — 2026-02-19 — v8.4.16
+  │ "I love the app have been using it since I had my second baby back in the beginning of 2023 and I've seen so many good results BUT I did not have so many advertisement especially just to do the workouts."
+  └────────────────────────────────────────
+
+  ┌────────────────────────────────────────
+  │ 评价 ID: 13710553183
+  │ [1★] JMEH1003 — 2026-02-03 — v8.4.15
+  │ "This app used to be fantastic…now it's nothing but ads and takes longer to get a workout in because of it. Will be finding something else to use."
+  └────────────────────────────────────────
+
+
+========================================================================
+【版本】 vNext+1 (P1)
+========================================================================
+
+------------------------------------------------------------
+需求: 优化: 内容质量问题
+用户故事: 作为用户，我希望 内容质量问题 得到改善
+------------------------------------------------------------
+
+测试用例 TC-005 [P2] — 验证: 优化: 内容质量问题
+
+  【前置条件】
+    - App 已安装
+    - 测试账号已就绪
+
+  【测试步骤】
+    Step 1: 按要求执行测试
+      → 预期: 结果符合预期
+
+  【预期结果】 需求得到验证
+  【验证方式】 30天内无相关差评
+
+  【溯源源用户评价 (共 3 条)】
+  这些评价是编写此测试用例的依据。测试通过的前提是: 以下用户反映的问题得到解决。
+
+  ┌────────────────────────────────────────
+  │ 评价 ID: 14131519821
+  │ [2★] M8trx — 2026-06-01 — v8.4.20
+  │ "I love this app and have used it for years. For whatever reason, I was redirected to the SHEIN website three times during a recent workout. Thought this was a one off but it keeps happening. Please fix!"
+  └────────────────────────────────────────
+
+  ┌────────────────────────────────────────
+  │ 评价 ID: 14048939271
+  │ [1★] paigealexisxoxo — 2026-05-10 — v8.4.20
+  │ "great app but only for financially stable women.Every workout I select stated I need premium.This was not the case previously."
+  └────────────────────────────────────────
+
+  ┌────────────────────────────────────────
+  │ 评价 ID: 13799390165
+  │ [2★] Denisekimberly — 2026-02-28 — v8.4.16
+  │ "The workouts are pretty good but it asked me if there were any areas I wanted to avoid exercising. I stated my abs and there are so many ab workouts in my plan. That part is a bummer."
+  └────────────────────────────────────────
+
+
+========================================================================
+覆盖矩阵 (Traceability Matrix)
+========================================================================
+
+  需求 ID        测试用例                                         源评价数
+  ------------ ---------------------------------------- --------
+  REQ-001      TC-001, TC-002                                  3
+  REQ-002      TC-003, TC-004                                  3
+  REQ-003      TC-005                                          3
+
+========================================================================
+End of Test Cases
+========================================================================
