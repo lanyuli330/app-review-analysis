@@ -118,5 +118,5 @@ E:\AI_learning_project\laien_homework\
 ## 换 App 使用
 
 1. 在 `collect_reviews.py` 修改 `APP_ID` 和 `APP_NAME`
-2. 当前APPLE RSS Feed服务已无法使用
+2. Apple RSS Feed接口又可以用了，估计是请求次数太多了ip被ban了，现在能正常爬取
 3. 运行 `python app.py` 即可, 所有分析、PRD、测试用例自动适配
