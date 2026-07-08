@@ -1,0 +1,156 @@
+{
+  "metadata": {
+    "title": "测试用例",
+    "total_test_cases": 5
+  },
+  "test_cases": [
+    {
+      "id": "TC-001",
+      "requirement_id": "REQ-001",
+      "title": "验证: 修复: 付费与订阅问题",
+      "priority": "P0",
+      "category": "functional",
+      "source_review_ids": [
+        "14212862587",
+        "14210920635",
+        "14204125134"
+      ],
+      "source_quotes": [
+        "Cancelled subscription and still got charged for it. No spot in app to manage no place on website either. Went to contact support and every time I hit submit it would say the request couldn't be submi",
+        "I do not care if I have to watch ads but what I do care about is if I get a pop up screen with no continuation option only advertising the paid version. The workout is available with ads yet the inter"
+      ],
+      "preconditions": [
+        "App 已安装",
+        "测试账号已就绪"
+      ],
+      "test_steps": [
+        {
+          "step": 1,
+          "action": "按要求执行测试",
+          "expected": "结果符合预期"
+        }
+      ],
+      "expected_result": "需求得到验证",
+      "verification": "30天内无相关差评"
+    },
+    {
+      "id": "TC-002",
+      "requirement_id": "REQ-001",
+      "title": "边界测试: 修复: 付费与订阅问题",
+      "priority": "P0",
+      "category": "functional",
+      "source_review_ids": [
+        "14212862587",
+        "14210920635",
+        "14204125134"
+      ],
+      "source_quotes": [
+        "Cancelled subscription and still got charged for it. No spot in app to manage no place on website either. Went to contact support and every time I hit submit it would say the request couldn't be submi",
+        "I do not care if I have to watch ads but what I do care about is if I get a pop up screen with no continuation option only advertising the paid version. The workout is available with ads yet the inter"
+      ],
+      "preconditions": [
+        "App 已安装",
+        "测试账号已就绪"
+      ],
+      "test_steps": [
+        {
+          "step": 1,
+          "action": "按要求执行测试",
+          "expected": "结果符合预期"
+        }
+      ],
+      "expected_result": "需求得到验证",
+      "verification": "30天内无相关差评"
+    },
+    {
+      "id": "TC-003",
+      "requirement_id": "REQ-002",
+      "title": "验证: 修复: 用户体验与广告问题",
+      "priority": "P0",
+      "category": "functional",
+      "source_review_ids": [
+        "13976452003",
+        "13766977638",
+        "13710553183"
+      ],
+      "source_quotes": [
+        "They've hidden the X button so that when the 90s ad finishes, you can't even get out of the ad without force closing the whole app. Been using this app since 2020. Been an avid user. Uninstalled today",
+        "I love the app have been using it since I had my second baby back in the beginning of 2023 and I've seen so many good results BUT I did not have so many advertisement especially just to do the workout"
+      ],
+      "preconditions": [
+        "App 已安装",
+        "测试账号已就绪"
+      ],
+      "test_steps": [
+        {
+          "step": 1,
+          "action": "按要求执行测试",
+          "expected": "结果符合预期"
+        }
+      ],
+      "expected_result": "需求得到验证",
+      "verification": "30天内无相关差评"
+    },
+    {
+      "id": "TC-004",
+      "requirement_id": "REQ-002",
+      "title": "边界测试: 修复: 用户体验与广告问题",
+      "priority": "P0",
+      "category": "functional",
+      "source_review_ids": [
+        "13976452003",
+        "13766977638",
+        "13710553183"
+      ],
+      "source_quotes": [
+        "They've hidden the X button so that when the 90s ad finishes, you can't even get out of the ad without force closing the whole app. Been using this app since 2020. Been an avid user. Uninstalled today",
+        "I love the app have been using it since I had my second baby back in the beginning of 2023 and I've seen so many good results BUT I did not have so many advertisement especially just to do the workout"
+      ],
+      "preconditions": [
+        "App 已安装",
+        "测试账号已就绪"
+      ],
+      "test_steps": [
+        {
+          "step": 1,
+          "action": "按要求执行测试",
+          "expected": "结果符合预期"
+        }
+      ],
+      "expected_result": "需求得到验证",
+      "verification": "30天内无相关差评"
+    },
+    {
+      "id": "TC-005",
+      "requirement_id": "REQ-003",
+      "title": "验证: 优化: 内容质量问题",
+      "priority": "P2",
+      "category": "functional",
+      "source_review_ids": [
+        "14131519821",
+        "14048939271",
+        "13799390165"
+      ],
+      "source_quotes": [
+        "I love this app and have used it for years. For whatever reason, I was redirected to the SHEIN website three times during a recent workout. Thought this was a one off but it keeps happening. Please fi",
+        "great app but only for financially stable women.Every workout I select stated I need premium.This was not the case previously."
+      ],
+      "preconditions": [
+        "App 已安装",
+        "测试账号已就绪"
+      ],
+      "test_steps": [
+        {
+          "step": 1,
+          "action": "按要求执行测试",
+          "expected": "结果符合预期"
+        }
+      ],
+      "expected_result": "需求得到验证",
+      "verification": "30天内无相关差评"
+    }
+  ],
+  "coverage_summary": {
+    "total_requirements_covered": 3
+  }
+}

@@ -1,0 +1,341 @@
+========================================================================
+PRD & Version Update Plan — Product Requirements Document
+========================================================================
+Generated: 2026-07-08 14:59
+Data Source: Apple App Store (US) RSS Feed, 486 reviews analyzed
+
+========================================================================
+1. 数据全景 (Data Landscape)
+========================================================================
+总评价数: 486 | 平均评分: 3.75/5.0
+正面评价: 323 条 (66%)
+中性评价: 28 条 (6%)
+负面评价: 135 条 (28%) — 其中 95 条为高质量差评 (quality>=0.3)
+
+【评分趋势 (月度)】
+  Month       Reviews     Neg%    Avg Trend
+  2026-02          29     38%   3.41 
+  2026-03          39     26%   3.79  ↑
+  2026-04          28     32%   3.57  ↓ ⚠
+  2026-05          38     34%   3.39  ↓ ⚠
+  2026-06          40     35%   3.27  ↓ ⚠
+  2026-07           6     17%   3.83  ↑
+
+【版本对比】
+  8.3: 77 reviews | 差评率 27% | 均分 3.84 | 差评 21/77
+  8.4: 409 reviews | 差评率 28% | 均分 3.73 | 差评 114/409
+
+用户喜爱的特性: love, workouts, great, like, work, day, really, just
+用户吐槽的关键词: free, used, subscription, ads, pay, workouts, use, money, charged, time
+
+========================================================================
+2. 问题深度分析 (Issue Analysis with User Evidence)
+========================================================================
+------------------------------------------------------------
+ISSUE-1: 付费与订阅问题 | 严重程度: CRITICAL | 影响: 74 条差评 (55% of negative)
+------------------------------------------------------------
+问题类别: payment_and_subscription
+
+
+【代表性用户评价 (Evidence)】
+  ┌─ 用户原声
+  │ "Cancelled subscription and still got charged for it. No spot in app to manage no place on website either. Went to contact support and every time I hit submit it would say the request couldn't be submi"
+  └─
+  ┌─ 用户原声
+  │ "I do not care if I have to watch ads but what I do care about is if I get a pop up screen with no continuation option only advertising the paid version. The workout is available with ads yet the inter"
+  └─
+  ┌─ 用户原声
+  │ "I downloaded this app yesterday and I wanted to try the 1-week free trial, but once I used the Apple Pay feature to subscribe to the free trial I was charged $29.99!? Dealing with my bank now to get m"
+  └─
+
+【受影响评价列表 (共 74 条)】
+  [  1] [1★] Bobillena            | 2026-06-22 | v8.4.24 | "Cancelled subscription and still got charged for it. No spot in app to manage no..."
+  [  2] [1★] kyacma               | 2026-06-21 | v8.4.24 | "I do not care if I have to watch ads but what I do care about is if I get a pop ..."
+  [  3] [1★] Tinazwrld143         | 2026-06-19 | v8.4.24 | "I downloaded this app yesterday and I wanted to try the 1-week free trial, but o..."
+  [  4] [1★] Jude /Judith         | 2026-06-12 | v8.4.23 | "It let me start my training on the "free app" but the second day it was making m..."
+  [  5] [1★] Yuri GHP             | 2026-06-10 | v8.4.21 | "They offer a free week then when you accept they charge you. Also doesn't let yo..."
+  [  6] [1★] ClemBirdLog          | 2026-06-03 | v8.4.21 | "I only got to do one session for free. Now it wants me to pay for a subscription..."
+  [  7] [1★] Iffy_13              | 2026-06-01 | v8.4.20 | "My app updated and I no longer have access to Free with Ads. Though the free opt..."
+  [  8] [1★] rjohn95              | 2026-05-25 | v8.4.20 | "The app may be free to download but there is little to no workouts now that you ..."
+  [  9] [1★] Danieleclarissa      | 2026-05-24 | v8.4.20 | "I signed up for this app because it advertised a fee trial. I was charged the sa..."
+  [ 10] [2★] chieskek             | 2026-05-19 | v8.4.20 | "I remembered using this app when I was in middle school and decided to try it ag..."
+  [ 11] [2★] HanBass98            | 2026-05-18 | v8.4.20 | "I've used this app for YEARS and recently there have been changes that almost fo..."
+  [ 12] [2★] Lila 1456            | 2026-05-18 | v8.4.20 | "I really thought this was amazing till my second workout and it didn't let me do..."
+  [ 13] [1★] Khb9393              | 2026-05-15 | v8.4.20 | "I used to love this app. I used it for 7 years. It used to be totally free witho..."
+  [ 14] [1★] Boxays               | 2026-05-14 | v8.4.20 | "Used for years and loved the workout history feature, but lately more and more w..."
+  [ 15] [1★] Liz005               | 2026-05-05 | v8.4.20 | "This app punishes you for not paying with ads that are extremely hard to get out..."
+  [ 16] [1★] Charlie Weaving      | 2026-05-05 | v8.4.20 | "I had the app for a while before I had to delete it for storage space. I recentl..."
+  [ 17] [1★] Kim2985              | 2026-05-02 | v8.4.20 | "I wanted to try the free week trial, and it said- "pay nothing now", but I got c..."
+  [ 18] [2★] sfttiwlsm            | 2026-04-30 | v8.4.20 | "I've been using this app for about 3 years, and I loved it. It was actually free..."
+  [ 19] [1★] LizzieLavender5      | 2026-04-24 | v8.4.20 | "Got this app because it was free, now you have to pay for a subscription to do t..."
+  [ 20] [2★] Sativa,W             | 2026-04-01 | v8.4.18 | "Tbh I always loved this app and have used it for years but recently I actually d..."
+  ... 另有 54 条评价 (完整列表见 analysis_result.json)
+
+------------------------------------------------------------
+ISSUE-2: 用户体验与广告问题 | 严重程度: HIGH | 影响: 13 条差评 (10% of negative)
+------------------------------------------------------------
+问题类别: ux_and_ads
+
+
+【代表性用户评价 (Evidence)】
+  ┌─ 用户原声
+  │ "They've hidden the X button so that when the 90s ad finishes, you can't even get out of the ad without force closing the whole app. Been using this app since 2020. Been an avid user. Uninstalled today"
+  └─
+  ┌─ 用户原声
+  │ "I love the app have been using it since I had my second baby back in the beginning of 2023 and I've seen so many good results BUT I did not have so many advertisement especially just to do the workout"
+  └─
+  ┌─ 用户原声
+  │ "This app used to be fantastic…now it's nothing but ads and takes longer to get a workout in because of it. Will be finding something else to use."
+  └─
+
+【受影响评价列表 (共 13 条)】
+  [  1] [1★] Jen T from SC        | 2026-04-19 | v8.4.18 | "They've hidden the X button so that when the 90s ad finishes, you can't even get..."
+  [  2] [2★] rachelpickles        | 2026-02-19 | v8.4.16 | "I love the app have been using it since I had my second baby back in the beginni..."
+  [  3] [1★] JMEH1003             | 2026-02-03 | v8.4.15 | "This app used to be fantastic…now it's nothing but ads and takes longer to get a..."
+  [  4] [1★] Melatron837          | 2025-11-14 | v8.4.9 | "What happened? This free app used to be my go to for workouts that I could pick ..."
+  [  5] [2★] neeneeatx            | 2025-11-04 | v8.4.7 | "Used to be better now you need to watch ads for the free workouts which is fine ..."
+  [  6] [1★] Yoyocurly            | 2025-10-28 | v8.4.7 | "This used to be such a great app & was my favorite for my abs day in the gym or ..."
+  [  7] [2★] Userr432             | 2025-10-23 | v8.4.5 | "I've used this app for years and I'm fine with watching ads. The only thing is t..."
+  [  8] [1★] SteamMouse           | 2025-10-16 | v8.4.5 | "A once decent app now unusable thanks to constant pop ups and not even being abl..."
+  [  9] [1★] wad2341              | 2025-10-12 | v8.4.4 | "I've used the free version of this app for several years but in the last few mon..."
+  [ 10] [1★] kennnnnballlll       | 2025-09-29 | v8.4.3 | "I loved this app. However 90 second ads have now been added for each workout. Ev..."
+  [ 11] [1★] ly_ange              | 2025-09-28 | v8.4.3 | "I've been using this app for at least 5 years now and absolutely loved it, but t..."
+  [ 12] [1★] Woman trying to work | 2025-09-17 | v8.4.1 | "Used to be a great workout app but now is so covered in adds you can't even get ..."
+  [ 13] [1★] Lyra Silvertongue092 | 2025-08-06 | v8.3.3 | "I used to use this app and just downloaded it to start using it again. Deleted i..."
+
+------------------------------------------------------------
+ISSUE-3: 内容质量问题 | 严重程度: MEDIUM | 影响: 6 条差评 (4% of negative)
+------------------------------------------------------------
+问题类别: content_quality
+
+【根因分析】
+  训练内容层面的问题:
+  - 第三方广告重定向 (如跳转到 SHEIN 网站) 破坏体验
+  - 个性化设置 (如避开腹部训练) 未生效
+  - 部分功能从免费变为付费
+  关键词证据: "workout", "exercise", "plan", "redirect"
+
+【代表性用户评价 (Evidence)】
+  ┌─ 用户原声
+  │ "I love this app and have used it for years. For whatever reason, I was redirected to the SHEIN website three times during a recent workout. Thought this was a one off but it keeps happening. Please fi"
+  └─
+  ┌─ 用户原声
+  │ "great app but only for financially stable women.Every workout I select stated I need premium.This was not the case previously."
+  └─
+  ┌─ 用户原声
+  │ "The workouts are pretty good but it asked me if there were any areas I wanted to avoid exercising. I stated my abs and there are so many ab workouts in my plan. That part is a bummer."
+  └─
+
+【受影响评价列表 (共 6 条)】
+  [  1] [2★] M8trx                | 2026-06-01 | v8.4.20 | "I love this app and have used it for years. For whatever reason, I was redirecte..."
+  [  2] [1★] paigealexisxoxo      | 2026-05-10 | v8.4.20 | "great app but only for financially stable women.Every workout I select stated I ..."
+  [  3] [2★] Denisekimberly       | 2026-02-28 | v8.4.16 | "The workouts are pretty good but it asked me if there were any areas I wanted to..."
+  [  4] [1★] Rue Faith Lutz       | 2026-02-21 | v8.4.16 | "I used this app so much back in the day. Unfortunately, it's no longer free to u..."
+  [  5] [1★] Awwwsomeness         | 2026-02-02 | v8.4.15 | "I've been away from the app for two months and now I'm back and want to restart...."
+  [  6] [2★] Laur3njoy            | 2025-08-07 | v8.3.3 | "I was hoping for real-person exercise demos, but most of the movements are shown..."
+
+========================================================================
+3. 版本更新计划 (Version Release Plan)
+========================================================================
+版本拆分原则:
+  - vNext (P0): 所有 critical 级别问题 (共 74 条差评, 覆盖 55% 负面)
+  - vNext+1 (P1): 所有 high 级别问题 (共 13 条差评)
+  - 拆分理由: critical 问题(付费信任)与 high 问题(UX/广告)分属不同模块, 可独立交付
+
+========================================================================
+  vNext (P0): Trust & Transparency — 信任修复版本
+========================================================================
+  目标: 修复付费体验信任问题, 覆盖 74 条差评
+  预期效果: 负面评价从 28% → 15%, 评分从 3.73 → 4.0+
+
+------------------------------------------------------------
+需求 REQ-001 [P0] 修复免费试用期承诺 — 7 天 = 7 天
+------------------------------------------------------------
+  用户故事:
+    作为新用户, 我想在承诺的 7 天试用期内无需付费就能使用 App,
+    以便在决定是否付费前充分评估 App 的价值
+
+  解决方案 (Implementation Plan):
+    1. 修改订阅流程: App Store 试用期配置为 7 天 (不是 1 天)
+    2. 支付确认页: 明确显示"试用 7 天后将自动续费 ¥XX/月"
+    3. 到期提醒: 试用第 5 天和第 7 天推送本地通知提醒即将付费
+    4. 支付后确认: 首次扣费后显示"已开始付费订阅"确认页
+
+  验收标准 (Acceptance Criteria):
+    - 新用户激活 7 天试用后, 7 天内 Apple 账单不产生任何扣费
+    - 试用第 5 天收到"还剩 2 天试用"的通知
+    - 首次扣费发生在试用期满后 (第 8 天)
+
+  验证方式:
+    发布后 30 天内, App Store 差评中不再出现 "charged after 1 day" /
+    "charged immediately" / "made me pay right away" 等关键词
+
+  商业影响: 中性 — 合规修复; 试用转化率可能提升 (用户有充分时间评估)
+
+  【用户证据 (直接引用)】
+    [1★] Bobillena (2026-06-22)
+    "Cancelled subscription and still got charged for it. No spot in app to manage no place on website either. Went to contact support and every time I hit submit it would say the request couldn't be submitted because it's spam. Don't get app it not free it will make you sign up for a subscription and not let you cancel it."
+
+    [1★] Tinazwrld143 (2026-06-19)
+    "I downloaded this app yesterday and I wanted to try the 1-week free trial, but once I used the Apple Pay feature to subscribe to the free trial I was charged $29.99!? Dealing with my bank now to get my money back but it literally said I would not get charged until a week after."
+
+    [1★] Bobillena (2026-06-22)
+    "Cancelled subscription and still got charged for it. No spot in app to manage no place on website either. Went to contact support and every time I hit submit it would say the request couldn't be submitted because it's spam. Don't get app it not free it will make you sign up for a subscription and not let you cancel it."
+
+------------------------------------------------------------
+需求 REQ-002 [P0] App 内添加订阅管理入口
+------------------------------------------------------------
+  用户故事:
+    作为现有用户, 我想在 App 设置页查看/取消/恢复我的订阅,
+    以便不需要离开 App 就能管理我的付费状态
+
+  解决方案:
+    1. 设置页新增 "Manage Subscription" 入口
+    2. 显示: 当前订阅状态 (Active/Expired)、到期日、下次扣费金额
+    3. 操作: Cancel Subscription (确认弹窗)、Restore Purchase
+    4. 取消后显示: "订阅已取消, 到期日前仍可继续使用"
+
+  验收标准:
+    - 付费用户可在 Settings > Subscription 查看完整订阅信息
+    - 取消流程 ≤3 步 (点击取消 → 确认弹窗 → 完成)
+    - 取消后状态即时更新
+    - 满足 Apple App Store Review Guideline 3.1.2 合规要求
+
+  验证方式:
+    30 天内差评中不再出现 "can't cancel" / "no way to manage" /
+    "can't figure how to cancel" 等投诉
+
+  商业影响: 正面 — 减少 App Store 退款申请, 满足合规要求, 提升用户信任
+
+  【用户证据】
+    [1★] Bobillena (2026-06-22)
+    "Cancelled subscription and still got charged for it. No spot in app to manage no place on website either. Went to contact support and every time I hit submit it would say the request couldn't be submitted because it's spam. Don't get app it not free it will make you sign up for a subscription and not let you cancel it."
+
+    [1★] ClemBirdLog (2026-06-03)
+    "I only got to do one session for free. Now it wants me to pay for a subscription. The 'deal' I was given was 12 Months for 29.99. (84% Off) The Non-Discounted Monthly Payment is 19.99. So yearly it'll be around 239.88 after your deal gets dropped. Ridiculous."
+
+    [1★] Iffy_13 (2026-06-01)
+    "My app updated and I no longer have access to Free with Ads. Though the free option with ads is shown when they promote the subscription, there's actually no where to choose that option. You are only given the options of paying yearly or monthly. This lack of transparency is now making me lose my free access while also trying to force me to pay for this app. Have had this app for years and it truly has turned awful."
+
+    [2★] chieskek (2026-05-19)
+    "I remembered using this app when I was in middle school and decided to try it again to help with some health problems I have. Just about everything now requires a subscription. SOME things you can watch an ad to gain access to, but not all. I tried some of the stretch routines and they aren't even really stretches half the time. Same for the yoga. Targeted workouts are a hit or miss. Don't trust the personal plan either!! They let you try it, but you gotta pay for that too in the end."
+
+------------------------------------------------------------
+需求 REQ-003 [P0] 重建免费基础体验层
+------------------------------------------------------------
+  用户故事:
+    作为未付费用户, 我想每天能完成 1-2 节免费训练 (含适度广告),
+    以便在没有经济压力的情况下保持健身习惯
+
+  解决方案:
+    1. 免费层: 每天 1-2 节基础训练 (含 30s 激励广告)
+    2. 付费墙时机: 用户完成首次训练后展示, 而非首次打开即展示
+    3. 付费价值展示: 付费墙页面突出展示 Premium 的额外内容数量
+    4. 灵活定价: 月付/季付/年付, 首次月付折扣 (如首月 50% off)
+
+  验收标准:
+    - 未付费用户每天可访问至少 1 节免费训练
+    - 首次打开 App 不弹出付费墙 (在完成训练后展示)
+    - 付费墙明确列出 Free vs Premium 的内容对比
+
+  验证方式:
+    免费用户 7 日留存率提升; 差评中 "everything requires payment" /
+    "need premium for every workout" 类投诉减少
+
+  商业影响:
+    短期: 直接付费转化可能小幅下降
+    长期: DAU 提升 → 广告收入增加 → 自然转化率提升
+    (参考: 健身 App 行业标准 — 免费层用户占总用户的 60-80%)
+
+  【用户证据】
+    [1★] Bobillena (2026-06-22)
+    "Cancelled subscription and still got charged for it. No spot in app to manage no place on website either. Went to contact support and every time I hit submit it would say the request couldn't be submitted because it's spam. Don't get app it not free it will make you sign up for a subscription and not let you cancel it."
+
+    [1★] Tinazwrld143 (2026-06-19)
+    "I downloaded this app yesterday and I wanted to try the 1-week free trial, but once I used the Apple Pay feature to subscribe to the free trial I was charged $29.99!? Dealing with my bank now to get my money back but it literally said I would not get charged until a week after."
+
+    [1★] Jude /Judith (2026-06-12)
+    "It let me start my training on the "free app" but the second day it was making me have to pay to continue so I don't recommend getting it unless u have the money to waste on it if u do it's pretty great"
+
+    [1★] Yuri GHP (2026-06-10)
+    "They offer a free week then when you accept they charge you. Also doesn't let you use the free part of the app anymore. Very disappointed I used to love this app"
+
+    [1★] ClemBirdLog (2026-06-03)
+    "I only got to do one session for free. Now it wants me to pay for a subscription. The 'deal' I was given was 12 Months for 29.99. (84% Off) The Non-Discounted Monthly Payment is 19.99. So yearly it'll be around 239.88 after your deal gets dropped. Ridiculous."
+
+    [1★] Iffy_13 (2026-06-01)
+    "My app updated and I no longer have access to Free with Ads. Though the free option with ads is shown when they promote the subscription, there's actually no where to choose that option. You are only given the options of paying yearly or monthly. This lack of transparency is now making me lose my free access while also trying to force me to pay for this app. Have had this app for years and it truly has turned awful."
+
+    [1★] rjohn95 (2026-05-25)
+    "The app may be free to download but there is little to no workouts now that you can do for free. I've had this app for a long time and have recently gotten back into it only to be rejected at every turn. I just clicked about 7 different options in a row and every time a pop up would appear stating that I'd have to have a paid plan to use any of them. This even included previously free workout that i had done and added to favorites in the past. Don't waste your time with this app."
+
+    [1★] Danieleclarissa (2026-05-24)
+    "I signed up for this app because it advertised a fee trial. I was charged the same day I signed up and wasn't given the advertised 3 days free. I tried contacting the company via email and no response. I tried to request a refund with Apple and they denied it. Very disappointed by the lack of support and misleading free trial terms. Don't trust this app."
+
+    [2★] chieskek (2026-05-19)
+    "I remembered using this app when I was in middle school and decided to try it again to help with some health problems I have. Just about everything now requires a subscription. SOME things you can watch an ad to gain access to, but not all. I tried some of the stretch routines and they aren't even really stretches half the time. Same for the yoga. Targeted workouts are a hit or miss. Don't trust the personal plan either!! They let you try it, but you gotta pay for that too in the end."
+
+========================================================================
+  vNext+1 (P1): Experience Polish — 体验优化版本
+========================================================================
+  目标: 修复 UX 体验和内容质量问题, 覆盖 13 + 6 条差评
+  预期效果: 评分从 4.0+ → 4.2+, 负面评价从 15% → <10%
+
+------------------------------------------------------------
+需求 REQ-004 [P1] 用户体验与广告问题
+------------------------------------------------------------
+  验证方式: 30 天内差评中不再出现 free, used, subscription, ads 相关投诉
+
+  【用户证据】
+    "They've hidden the X button so that when the 90s ad finishes, you can't even get out of the ad without force closing the whole app. Been using this app since 2020. Been an avid user. Uninstalled today"
+    "I love the app have been using it since I had my second baby back in the beginning of 2023 and I've seen so many good results BUT I did not have so many advertisement especially just to do the workout"
+
+------------------------------------------------------------
+需求 REQ-005 [P2] 内容质量问题
+------------------------------------------------------------
+  解决方案:
+    1. 审查并移除训练中跳转到第三方电商网站的广告链接
+    2. 修复个性化训练计划设置 (如避开特定部位的训练)
+    3. 恢复之前免费、现在变为付费的功能为免费 (如基础训练)
+  验证方式: 30 天内差评中不再出现 free, used, subscription, ads 相关投诉
+
+  【用户证据】
+    "I love this app and have used it for years. For whatever reason, I was redirected to the SHEIN website three times during a recent workout. Thought this was a one off but it keeps happening. Please fi"
+    "great app but only for financially stable women.Every workout I select stated I need premium.This was not the case previously."
+
+========================================================================
+4. 成功指标 (Success Metrics)
+========================================================================
+
+  vNext 版本发布后:
+    - App Store 评分从 3.73 → 4.0+ (目标: 30 天内)
+    - 负面评价占比从 28% → 15% 以下
+    - 1 星评价中, "charged" 关键词出现频率降为 0
+    - 订阅管理相关投诉降为 0
+
+  vNext+1 版本发布后:
+    - App Store 评分持续上升至 4.2+
+    - 负面评价稳定在 10% 以内
+    - 免费用户 7 日留存率提升 20%+
+    - 广告相关投诉降为 0
+
+  需要保留的正面特性 (不可破坏):
+    love, workouts, great, like, work, day, really, just
+
+========================================================================
+5. 风险评估 (Risk Assessment)
+========================================================================
+
+  如果什么都不做 (Risks of Inaction):
+    - 评分持续下滑至 3.5- → App Store 搜索排名下降
+    - 竞品 Fitness App 趁机获取不满用户
+    - 差评率从当前的 28% 继续攀升 → 新用户获取成本增加
+    - 已有 2 年老用户因广告问题卸载 → LTV 损失
+
+  实施风险:
+    - REQ-003 免费体验层可能短期影响付费转化 → 通过 A/B 测试逐步推出
+    - Apple 审核可能因订阅流程变更延缓 → 提前提交审核, 留足 buffer
+
+========================================================================
+End of PRD — LaienTech Review Analysis Project
+========================================================================

@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>App Review Analysis Dashboard</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+<style>
+:root { --bg: #0f1117; --card-bg: #1a1d27; --border: #2a2d3a; --text: #e1e4ed; --muted: #8b8fa3; --accent: #6c8cff; }
+* { margin:0; padding:0; box-sizing:border-box; }
+body { background:var(--bg); color:var(--text); font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif; padding:24px; max-width:1200px; margin:0 auto; }
+h1 { text-align:center; margin-bottom:8px; font-size:24px; }
+h2 { font-size:18px; margin:24px 0 12px; color:var(--accent); border-bottom:1px solid var(--border); padding-bottom:8px; }
+.section { margin:24px 0; }
+.grid-2 { display:grid; grid-template-columns:1fr 1fr; gap:20px; }
+@media (max-width:768px) { .grid-2 { grid-template-columns:1fr; } }
+</style>
+</head>
+<body>
+<h1>📊 App Review Analysis Dashboard</h1>
+<p style="text-align:center;color:var(--muted);margin-bottom:24px">Generated: 2026-07-08 14:59 | 486 reviews analyzed</p>
+
+<h2>1. 差评关键词词云</h2>
+<div class="section"><div style="text-align:center;padding:20px;max-width:700px;margin:0 auto;line-height:2.2"><span style="font-size:52px;color:#e0556a;opacity:1.0;margin:3px 10px;display:inline-block;cursor:default" title="free trial (score: 1.00)">free trial</span><span style="font-size:30px;color:#56b6c2;opacity:0.7590877878699415;margin:3px 10px;display:inline-block;cursor:default" title="free workouts (score: 0.46)">free workouts</span><span style="font-size:35px;color:#4caf93;opacity:0.7506405390070597;margin:3px 10px;display:inline-block;cursor:default" title="90 second ads (score: 0.45)">90 second ads</span><span style="font-size:25px;color:#98c379;opacity:0.7055679368699119;margin:3px 10px;display:inline-block;cursor:default" title="90 second (score: 0.35)">90 second</span><span style="font-size:30px;color:#6c8cff;opacity:0.7047007451128631;margin:3px 10px;display:inline-block;cursor:default" title="ve using years (score: 0.34)">ve using years</span><span style="font-size:29px;color:#56b6c2;opacity:0.6961501085154613;margin:3px 10px;display:inline-block;cursor:default" title="free trial charged (score: 0.32)">free trial charged</span><span style="font-size:24px;color:#4caf93;opacity:0.6944228387542406;margin:3px 10px;display:inline-block;cursor:default" title="longer free (score: 0.32)">longer free</span><span style="font-size:29px;color:#98c379;opacity:0.6922755262554423;margin:3px 10px;display:inline-block;cursor:default" title="free week trial (score: 0.32)">free week trial</span><span style="font-size:29px;color:#6c8cff;opacity:0.6922755262554423;margin:3px 10px;display:inline-block;cursor:default" title="watch ads free (score: 0.32)">watch ads free</span><span style="font-size:29px;color:#56b6c2;opacity:0.6922755262554423;margin:3px 10px;display:inline-block;cursor:default" title="workouts ai slop (score: 0.32)">workouts ai slop</span></div></div>
+
+<h2>2. 评论情绪时间线</h2>
+<div class="section">
+    <div style="margin:20px 0">
+        <canvas id="sentimentTimeline" style="max-height:350px"></canvas>
+    </div>
+    <script>
+    (function() {
+        var ctx = document.getElementById('sentimentTimeline');
+        if (!ctx) return;
+        new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: ["2025-08", "2025-09", "2025-10", "2025-11", "2025-12", "2026-01", "2026-02", "2026-03", "2026-04", "2026-05", "2026-06", "2026-07"],
+                datasets: [
+                    { label: 'Positive', data: [36, 61, 34, 23, 15, 32, 17, 26, 16, 22, 21, 4], backgroundColor: '#4caf93', borderRadius: 4 },
+                    { label: 'Neutral',  data: [1, 4, 3, 1, 0, 1, 1, 3, 3, 3, 5, 1], backgroundColor: '#e8b44b', borderRadius: 4 },
+                    { label: 'Negative', data: [18, 12, 16, 10, 4, 13, 11, 10, 9, 13, 14, 1], backgroundColor: '#e0556a', borderRadius: 4 },
+                ]
+            },
+            options: {
+                responsive: true,
+                scales: {
+                    x: { stacked: true, ticks: { color: '#8b8fa3' }, grid: { display: false } },
+                    y: { stacked: true, title: { display: true, text: 'Reviews', color: '#8b8fa3' }, ticks: { color: '#8b8fa3' }, grid: { color: '#2a2d3a' } }
+                },
+                plugins: { legend: { labels: { color: '#e1e4ed' } } }
+            }
+        });
+    })();
+    </script>
+    </div>
+
+<h2>3. 版本口碑趋势</h2>
+<div class="section">
+    <div style="margin:20px 0">
+        <canvas id="versionTrend" style="max-height:300px"></canvas>
+    </div>
+    <script>
+    (function() {
+        var ctx = document.getElementById('versionTrend');
+        if (!ctx) return;
+        new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: ["8.3", "8.4"],
+                datasets: [
+                    { label: 'Avg Rating', data: [3.84, 3.73], borderColor: '#6c8cff', backgroundColor: 'rgba(108,140,255,.1)', tension: 0.3, yAxisID: 'y' },
+                    { label: 'Neg%', data: [27.3, 27.9], borderColor: '#e0556a', backgroundColor: 'rgba(224,85,106,.1)', tension: 0.3, yAxisID: 'y1', borderDash: [5,5] },
+                ]
+            },
+            options: {
+                responsive: true,
+                scales: {
+                    x: { ticks: { color: '#8b8fa3' }, grid: { display: false } },
+                    y: { type: 'linear', position: 'left', title: { display: true, text: 'Avg Rating', color: '#8b8fa3' }, min: 2.5, max: 5, ticks: { color: '#8b8fa3' }, grid: { color: '#2a2d3a' } },
+                    y1: { type: 'linear', position: 'right', title: { display: true, text: 'Negative %', color: '#8b8fa3' }, min: 0, ticks: { color: '#8b8fa3', callback: function(v) { return v+'%' } }, grid: { display: false } }
+                },
+                plugins: { legend: { labels: { color: '#e1e4ed' } } }
+            }
+        });
+    })();
+    </script>
+    </div>
+
+<div class="grid-2">
+<div>
+<h2>4. 高风险版本</h2>
+<div style="display:grid;gap:16px">
+        <div style="background:var(--card-bg,#1a1d27);border:1px solid var(--border,#2a2d3a);border-radius:10px;padding:20px">
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px">
+                <h3 style="margin:0;color:var(--accent,#6c8cff)">Version 8.4</h3>
+                <span style="font-size:13px;padding:4px 12px;border-radius:20px;background:rgba(224,85,106,.2);color:#e0556a">🔴 High</span>
+            </div>
+            <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin-bottom:12px">
+                <div><small style="color:var(--muted,#8b8fa3)">总评价</small><br><strong>409</strong></div>
+                <div><small style="color:var(--muted,#8b8fa3)">差评</small><br><strong style="color:#e0556a">114 (28%)</strong></div>
+                <div><small style="color:var(--muted,#8b8fa3)">均分</small><br><strong>3.73</strong></div>
+            </div>
+            <div><small style="color:var(--muted,#8b8fa3)">核心问题关键词</small><br><span style="font-size:14px">free, let, pay, subscription, trial</span></div>
+        </div>
+        
+        <div style="background:var(--card-bg,#1a1d27);border:1px solid var(--border,#2a2d3a);border-radius:10px;padding:20px">
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px">
+                <h3 style="margin:0;color:var(--accent,#6c8cff)">Version 8.3</h3>
+                <span style="font-size:13px;padding:4px 12px;border-radius:20px;background:rgba(224,85,106,.2);color:#e0556a">🔴 High</span>
+            </div>
+            <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin-bottom:12px">
+                <div><small style="color:var(--muted,#8b8fa3)">总评价</small><br><strong>77</strong></div>
+                <div><small style="color:var(--muted,#8b8fa3)">差评</small><br><strong style="color:#e0556a">21 (27%)</strong></div>
+                <div><small style="color:var(--muted,#8b8fa3)">均分</small><br><strong>3.84</strong></div>
+            </div>
+            <div><small style="color:var(--muted,#8b8fa3)">核心问题关键词</small><br><span style="font-size:14px">free, pay, sign, subscription, use</span></div>
+        </div>
+        </div>
+</div>
+<div>
+<h2>5. 差评高峰日</h2>
+
+    <div style="background:var(--card-bg,#1a1d27);border:1px solid var(--border,#2a2d3a);border-radius:10px;padding:20px">
+        <h3 style="color:#e0556a;margin-bottom:8px">📉 差评高峰日</h3>
+        <div style="font-size:24px;font-weight:bold;margin-bottom:4px">2025-09-28</div>
+        <div style="color:var(--muted,#8b8fa3);margin-bottom:12px">
+            3 条差评 / 4 条总评价 (75%)
+        </div>
+        <div style="max-height:200px;overflow-y:auto">
+            <small style="color:var(--muted,#8b8fa3)">当天差评示例:</small>
+    
+            <div style="margin:8px 0;padding:8px;background:var(--bg,#0f1117);border-radius:6px;font-size:12px">
+                [1★] <strong>IsabelleNoor</strong>: "90 sec ad for one workout this new thing is very annoying"
+            </div>
+        
+            <div style="margin:8px 0;padding:8px;background:var(--bg,#0f1117);border-radius:6px;font-size:12px">
+                [1★] <strong>ly_ange</strong>: "I've been using this app for at least 5 years now and absolutely loved it, but that is no longer the case... I loved that I can pick and choose differ"
+            </div>
+        
+            <div style="margin:8px 0;padding:8px;background:var(--bg,#0f1117);border-radius:6px;font-size:12px">
+                [1★] <strong>marissa2345678910</strong>: "Upsetting they added ADs. Time to find a new app after using this one for 5+ years! Disappointed they sold out to have ADs. The price point per year f"
+            </div>
+        </div></div>
+</div>
+</div>
+
+<h2>6. 差评证据 (Top 20)</h2>
+<div class="section">
+    <div style="overflow-x:auto;margin:20px 0">
+        <table style="width:100%;border-collapse:collapse">
+            <thead>
+                <tr style="text-align:left;color:var(--muted,#8b8fa3);font-size:12px">
+                    <th style="padding:8px;border-bottom:2px solid var(--border,#2a2d3a)">评分</th>
+                    <th style="padding:8px;border-bottom:2px solid var(--border,#2a2d3a)">用户</th>
+                    <th style="padding:8px;border-bottom:2px solid var(--border,#2a2d3a)">日期</th>
+                    <th style="padding:8px;border-bottom:2px solid var(--border,#2a2d3a)">版本</th>
+                    <th style="padding:8px;border-bottom:2px solid var(--border,#2a2d3a)">评价内容</th>
+                </tr>
+            </thead>
+            <tbody>
+        <tr>
+            <td style="padding:8px;border-bottom:1px solid var(--border,#2a2d3a);font-size:12px">🔴 1★</td>
+            <td style="padding:8px;border-bottom:1px solid var(--border,#2a2d3a);font-size:12px">coverS11</td>
+            <td style="padding:8px;border-bottom:1px solid var(--border,#2a2d3a);font-size:12px">2025-12-09</td>
+            <td style="padding:8px;border-bottom:1px solid var(--border,#2a2d3a);font-size:12px">v8.4.11</td>
+            <td style="padding:8px;border-bottom:1px solid var(--border,#2a2d3a);font-size:12px">I used to use this app ALL the time. I've been using it multiple times a week, sometimes multiple ti...</td>
+        </tr>
+        
+        <tr>
+            <td style="padding:8px;border-bottom:1px solid var(--border,#2a2d3a);font-size:12px">🟠 2★</td>
+            <td style="padding:8px;border-bottom:1px solid var(--border,#2a2d3a);font-size:12px">sfttiwlsm</td>
+            <td style="padding:8px;border-bottom:1px solid var(--border,#2a2d3a);font-size:12px">2026-04-30</td>
+            <td style="padding:8px;border-bottom:1px solid var(--border,#2a2d3a);font-size:12px">v8.4.20</td>
+            <td style="padding:8px;border-bottom:1px solid var(--border,#2a2d3a);font-size:12px">I've been using this app for about 3 years, and I loved it. It was actually free with little to no a...</td>
+        </tr>
+        
+        <tr>
+            <td style="padding:8px;border-bottom:1px solid var(--border,#2a2d3a);font-size:12px">🔴 1★</td>
+            <td style="padding:8px;border-bottom:1px solid var(--border,#2a2d3a);font-size:12px">LizzieLavender5</td>
+            <td style="padding:8px;border-bottom:1px solid var(--border,#2a2d3a);font-size:12px">2026-04-24</td>
+            <td style="padding:8px;border-bottom:1px solid var(--border,#2a2d3a);font-size:12px">v8.4.20</td>
+            <td style="padding:8px;border-bottom:1px solid var(--border,#2a2d3a);font-size:12px">Got this app because it was free, now you have to pay for a subscription to do the exercises. Go bac...</td>
+        </tr>
+        
+        <tr>
+            <td style="padding:8px;border-bottom:1px solid var(--border,#2a2d3a);font-size:12px">🔴 1★</td>
+            <td style="padding:8px;border-bottom:1px solid var(--border,#2a2d3a);font-size:12px">RLeighA</td>
+            <td style="padding:8px;border-bottom:1px solid var(--border,#2a2d3a);font-size:12px">2026-01-16</td>
+            <td style="padding:8px;border-bottom:1px solid var(--border,#2a2d3a);font-size:12px">v8.4.14</td>
+            <td style="padding:8px;border-bottom:1px solid var(--border,#2a2d3a);font-size:12px">2nd attempt at reviewing this dogwater app. They're locking previously-free features behind paywalls...</td>
+        </tr>
+        
+        <tr>
+            <td style="padding:8px;border-bottom:1px solid var(--border,#2a2d3a);font-size:12px">🔴 1★</td>
+            <td style="padding:8px;border-bottom:1px solid var(--border,#2a2d3a);font-size:12px">Melatron837</td>
+            <td style="padding:8px;border-bottom:1px solid var(--border,#2a2d3a);font-size:12px">2025-11-14</td>
+            <td style="padding:8px;border-bottom:1px solid var(--border,#2a2d3a);font-size:12px">v8.4.9</td>
+            <td style="padding:8px;border-bottom:1px solid var(--border,#2a2d3a);font-size:12px">What happened? This free app used to be my go to for workouts that I could pick and do at random and...</td>
+        </tr>
+        
+        <tr>
+            <td style="padding:8px;border-bottom:1px solid var(--border,#2a2d3a);font-size:12px">🔴 1★</td>
+            <td style="padding:8px;border-bottom:1px solid var(--border,#2a2d3a);font-size:12px">Fly Girl 2.0</td>
+            <td style="padding:8px;border-bottom:1px solid var(--border,#2a2d3a);font-size:12px">2025-10-26</td>
+            <td style="padding:8px;border-bottom:1px solid var(--border,#2a2d3a);font-size:12px">v8.4.7</td>
+            <td style="padding:8px;border-bottom:1px solid var(--border,#2a2d3a);font-size:12px">Really great app until they started trying to get you to buy their subscription- short ads are fine ...</td>
+        </tr>
+        
+        <tr>
+            <td style="padding:8px;border-bottom:1px solid var(--border,#2a2d3a);font-size:12px">🟠 2★</td>
+            <td style="padding:8px;border-bottom:1px solid var(--border,#2a2d3a);font-size:12px">propel gurl</td>
+            <td style="padding:8px;border-bottom:1px solid var(--border,#2a2d3a);font-size:12px">2025-10-08</td>
+            <td style="padding:8px;border-bottom:1px solid var(--border,#2a2d3a);font-size:12px">v8.4.3</td>
+            <td style="padding:8px;border-bottom:1px solid var(--border,#2a2d3a);font-size:12px">This app "was" literally my favorite workout app and now it's not yesterday morning I logged into se...</td>
+        </tr>
+        
+        <tr>
+            <td style="padding:8px;border-bottom:1px solid var(--border,#2a2d3a);font-size:12px">🟠 2★</td>
+            <td style="padding:8px;border-bottom:1px solid var(--border,#2a2d3a);font-size:12px">KittyKimiko🤘</td>
+            <td style="padding:8px;border-bottom:1px solid var(--border,#2a2d3a);font-size:12px">2025-10-08</td>
+            <td style="padding:8px;border-bottom:1px solid var(--border,#2a2d3a);font-size:12px">v8.4.3</td>
+            <td style="padding:8px;border-bottom:1px solid var(--border,#2a2d3a);font-size:12px">I've been using this app for years and it's really helped me with taking care of myself to the point...</td>
+        </tr>
+        
+        <tr>
+            <td style="padding:8px;border-bottom:1px solid var(--border,#2a2d3a);font-size:12px">🔴 1★</td>
+            <td style="padding:8px;border-bottom:1px solid var(--border,#2a2d3a);font-size:12px">Wenderoos</td>
+            <td style="padding:8px;border-bottom:1px solid var(--border,#2a2d3a);font-size:12px">2026-01-25</td>
+            <td style="padding:8px;border-bottom:1px solid var(--border,#2a2d3a);font-size:12px">v8.4.15</td>
+            <td style="padding:8px;border-bottom:1px solid var(--border,#2a2d3a);font-size:12px">I love the workout. I don't love that there seem to be a zillion subscription options and no clear i...</td>
+        </tr>
+        
+        <tr>
+            <td style="padding:8px;border-bottom:1px solid var(--border,#2a2d3a);font-size:12px">🟠 2★</td>
+            <td style="padding:8px;border-bottom:1px solid var(--border,#2a2d3a);font-size:12px">oREOLUWd</td>
+            <td style="padding:8px;border-bottom:1px solid var(--border,#2a2d3a);font-size:12px">2025-09-30</td>
+            <td style="padding:8px;border-bottom:1px solid var(--border,#2a2d3a);font-size:12px">v8.4.3</td>
+            <td style="padding:8px;border-bottom:1px solid var(--border,#2a2d3a);font-size:12px">I go in to my day four workout and imagine my surprise when I see this ad that won't let me click ou...</td>
+        </tr>
+        
+        <tr>
+            <td style="padding:8px;border-bottom:1px solid var(--border,#2a2d3a);font-size:12px">🔴 1★</td>
+            <td style="padding:8px;border-bottom:1px solid var(--border,#2a2d3a);font-size:12px">UnsatisfiedCust</td>
+            <td style="padding:8px;border-bottom:1px solid var(--border,#2a2d3a);font-size:12px">2025-08-17</td>
+            <td style="padding:8px;border-bottom:1px solid var(--border,#2a2d3a);font-size:12px">v8.3.4</td>
+            <td style="padding:8px;border-bottom:1px solid var(--border,#2a2d3a);font-size:12px">Got this app after having it about 5 years ago. The intro forces you through a survey and to sign up...</td>
+        </tr>
+        
+        <tr>
+            <td style="padding:8px;border-bottom:1px solid var(--border,#2a2d3a);font-size:12px">🔴 1★</td>
+            <td style="padding:8px;border-bottom:1px solid var(--border,#2a2d3a);font-size:12px">Tinazwrld143</td>
+            <td style="padding:8px;border-bottom:1px solid var(--border,#2a2d3a);font-size:12px">2026-06-19</td>
+            <td style="padding:8px;border-bottom:1px solid var(--border,#2a2d3a);font-size:12px">v8.4.24</td>
+            <td style="padding:8px;border-bottom:1px solid var(--border,#2a2d3a);font-size:12px">I downloaded this app yesterday and I wanted to try the 1-week free trial, but once I used the Apple...</td>
+        </tr>
+        
+        <tr>
+            <td style="padding:8px;border-bottom:1px solid var(--border,#2a2d3a);font-size:12px">🟠 2★</td>
+            <td style="padding:8px;border-bottom:1px solid var(--border,#2a2d3a);font-size:12px">M8trx</td>
+            <td style="padding:8px;border-bottom:1px solid var(--border,#2a2d3a);font-size:12px">2026-06-01</td>
+            <td style="padding:8px;border-bottom:1px solid var(--border,#2a2d3a);font-size:12px">v8.4.20</td>
+            <td style="padding:8px;border-bottom:1px solid var(--border,#2a2d3a);font-size:12px">I love this app and have used it for years. For whatever reason, I was redirected to the SHEIN websi...</td>
+        </tr>
+        
+        <tr>
+            <td style="padding:8px;border-bottom:1px solid var(--border,#2a2d3a);font-size:12px">🔴 1★</td>
+            <td style="padding:8px;border-bottom:1px solid var(--border,#2a2d3a);font-size:12px">Khb9393</td>
+            <td style="padding:8px;border-bottom:1px solid var(--border,#2a2d3a);font-size:12px">2026-05-15</td>
+            <td style="padding:8px;border-bottom:1px solid var(--border,#2a2d3a);font-size:12px">v8.4.20</td>
+            <td style="padding:8px;border-bottom:1px solid var(--border,#2a2d3a);font-size:12px">I used to love this app. I used it for 7 years. It used to be totally free without ads. Then they ma...</td>
+        </tr>
+        
+        <tr>
+            <td style="padding:8px;border-bottom:1px solid var(--border,#2a2d3a);font-size:12px">🔴 1★</td>
+            <td style="padding:8px;border-bottom:1px solid var(--border,#2a2d3a);font-size:12px">Boxays</td>
+            <td style="padding:8px;border-bottom:1px solid var(--border,#2a2d3a);font-size:12px">2026-05-14</td>
+            <td style="padding:8px;border-bottom:1px solid var(--border,#2a2d3a);font-size:12px">v8.4.20</td>
+            <td style="padding:8px;border-bottom:1px solid var(--border,#2a2d3a);font-size:12px">Used for years and loved the workout history feature, but lately more and more workouts required the...</td>
+        </tr>
+        
+        <tr>
+            <td style="padding:8px;border-bottom:1px solid var(--border,#2a2d3a);font-size:12px">🔴 1★</td>
+            <td style="padding:8px;border-bottom:1px solid var(--border,#2a2d3a);font-size:12px">IHateRadio.ComA</td>
+            <td style="padding:8px;border-bottom:1px solid var(--border,#2a2d3a);font-size:12px">2026-02-12</td>
+            <td style="padding:8px;border-bottom:1px solid var(--border,#2a2d3a);font-size:12px">v8.4.16</td>
+            <td style="padding:8px;border-bottom:1px solid var(--border,#2a2d3a);font-size:12px">This app used to be the best app by a mile. Easy workouts, any level, but now it's all behind a subs...</td>
+        </tr>
+        
+        <tr>
+            <td style="padding:8px;border-bottom:1px solid var(--border,#2a2d3a);font-size:12px">🔴 1★</td>
+            <td style="padding:8px;border-bottom:1px solid var(--border,#2a2d3a);font-size:12px">Awfultiktok9271</td>
+            <td style="padding:8px;border-bottom:1px solid var(--border,#2a2d3a);font-size:12px">2026-01-13</td>
+            <td style="padding:8px;border-bottom:1px solid var(--border,#2a2d3a);font-size:12px">v8.4.14</td>
+            <td style="padding:8px;border-bottom:1px solid var(--border,#2a2d3a);font-size:12px">you have to literally pay for every. single. thing. the workouts that you look-up on the app and fav...</td>
+        </tr>
+        
+        <tr>
+            <td style="padding:8px;border-bottom:1px solid var(--border,#2a2d3a);font-size:12px">🔴 1★</td>
+            <td style="padding:8px;border-bottom:1px solid var(--border,#2a2d3a);font-size:12px">Saconc</td>
+            <td style="padding:8px;border-bottom:1px solid var(--border,#2a2d3a);font-size:12px">2025-12-29</td>
+            <td style="padding:8px;border-bottom:1px solid var(--border,#2a2d3a);font-size:12px">v8.4.13</td>
+            <td style="padding:8px;border-bottom:1px solid var(--border,#2a2d3a);font-size:12px">Charges without my consent. Back in June I did the mistake to enroll and got charge, I call/email an...</td>
+        </tr>
+        
+        <tr>
+            <td style="padding:8px;border-bottom:1px solid var(--border,#2a2d3a);font-size:12px">🔴 1★</td>
+            <td style="padding:8px;border-bottom:1px solid var(--border,#2a2d3a);font-size:12px">kennnnnballlll</td>
+            <td style="padding:8px;border-bottom:1px solid var(--border,#2a2d3a);font-size:12px">2025-09-29</td>
+            <td style="padding:8px;border-bottom:1px solid var(--border,#2a2d3a);font-size:12px">v8.4.3</td>
+            <td style="padding:8px;border-bottom:1px solid var(--border,#2a2d3a);font-size:12px">I loved this app. However 90 second ads have now been added for each workout. Every time you want to...</td>
+        </tr>
+        
+        <tr>
+            <td style="padding:8px;border-bottom:1px solid var(--border,#2a2d3a);font-size:12px">🔴 1★</td>
+            <td style="padding:8px;border-bottom:1px solid var(--border,#2a2d3a);font-size:12px">ly_ange</td>
+            <td style="padding:8px;border-bottom:1px solid var(--border,#2a2d3a);font-size:12px">2025-09-28</td>
+            <td style="padding:8px;border-bottom:1px solid var(--border,#2a2d3a);font-size:12px">v8.4.3</td>
+            <td style="padding:8px;border-bottom:1px solid var(--border,#2a2d3a);font-size:12px">I've been using this app for at least 5 years now and absolutely loved it, but that is no longer the...</td>
+        </tr>
+        </tbody>
+        </table>
+    </div>
+    </div>
+
+<p style="text-align:center;color:var(--muted);margin-top:32px;padding:24px">LaienTech Review Analysis · Auto-generated Dashboard</p>
+</body>
+</html>
