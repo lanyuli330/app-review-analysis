@@ -78,8 +78,8 @@ def step1_collect(offline=False):
         state["steps"][s]["progress"] = 100
         print(f"  [Collect] OFFLINE mode: loaded {data['metadata']['total_reviews']} cached reviews", flush=True)
     else:
-        from collect_reviews import collect_reviews, APP_ID, APP_NAME, COUNTRY, SLEEP_INTERVAL
-        data = collect_reviews(APP_ID, APP_NAME, COUNTRY, SLEEP_INTERVAL)
+        from collect_reviews import collect_reviews, APP_ID, APP_NAME, COUNTRY
+        data = collect_reviews(APP_ID, APP_NAME, COUNTRY, sleep_interval=1)
         with open(OUTPUT, "w", encoding="utf-8") as f:
             json.dump(data, f, ensure_ascii=False, indent=2)
 
